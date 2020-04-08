@@ -34,7 +34,7 @@ The plugin currently collects 3 variables about the hardware it finds: `serial`,
 
 Example output using `ansible-inventory` and the provided `sandbox_aci.yml`:
 ```
-$ ansible-inventory -i msp_aci.yml --playbook-dir=./ --list
+$ ansible-inventory -i sandbox_aci.yml --playbook-dir=./ --list
 {
     "_meta": {
         "hostvars": {
