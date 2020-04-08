@@ -63,7 +63,7 @@ $ ansible-inventory -i msp_aci.yml --playbook-dir=./ --list
 [...]
 ```
 
-### Files
+## Files
 | Name | Description |
 | ---- | ----------- |
 | `inventory_plugins/aci.py` | The main plugin code. Move to where it makes sense in your envrionment/project.
