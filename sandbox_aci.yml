@@ -1,0 +1,9 @@
+---
+# Example inventory file
+# Note: This sandbox system has been observed to report its spine switch as role "unsupported"
+# This issue will result in a child group called "unsupported" rather than the expected group "spine"
+plugin: aci
+host: sandboxapicdc.cisco.com
+username: admin
+password: ciscopsdt
+validate_certs: no

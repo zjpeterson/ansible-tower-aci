@@ -1,0 +1,27 @@
+---
+- name: Show controllers
+  hosts: controller
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - debug:
+      msg: "{{ inventory_hostname }} is a {{ model }} with serial {{ serial }} at {{ address }}"
+
+- name: Show spine switches
+  hosts: spine
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - debug:
+      msg: "{{ inventory_hostname }} is a {{ model }} with serial {{ serial }} at {{ address }}"
+
+- name: Show leaf switches
+  hosts: leaf
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - debug:
+      msg: "{{ inventory_hostname }} is a {{ model }} with serial {{ serial }} at {{ address }}"
