@@ -13,20 +13,28 @@ DOCUMENTATION = '''
         host:
             description: IP Address or hostname of APIC resolvable by Ansible control host.
             type: string
+            env:
+                - name: ACI_HOST
             required: True
             aliases: [ hostname ]
         username:
             description: The username to use for authentication.
             type: string
+            env:
+                - name: ACI_USERNAME
             required: True
             aliases: [ user ]
         password:
             description: The password to use for authentication.
             type: string
+            env:
+                - name: ACI_PASSWORD
             required: True
         validate_certs:
             description: If no, SSL certificates will not be validated.
             type: bool
+            env:
+                - name: ACI_VERIFY_SSL
             default: True
             required: False
             aliases: [ verify_ssl ]

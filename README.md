@@ -63,6 +63,15 @@ $ ansible-inventory -i sandbox_aci.yml --playbook-dir=./ --list
 [...]
 ```
 
+## Usage
+You must provide the following information in your inventory:
+| Inventory Variable | Environment Variable | Required | Description |
+| ------------------ | -------------------- | -------- | ----------- |
+| `host`           | `ACI_HOST`       | y | IP Address or hostname of APIC resolvable by Ansible control host
+| `validate_certs` | `ACI_VERIFY_SSL` | n | If no, SSL certificates will not be validated.
+| `username`       | `ACI_USERNAME`   | y | The username to use for authentication
+| `password`       | `ACI_PASSWORD`   | y | The password to use for authentication
+
 ## Files
 | Name | Description |
 | ---- | ----------- |
