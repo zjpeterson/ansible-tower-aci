@@ -29,7 +29,7 @@ $ ansible-inventory -i sandbox_aci.yml --playbook-dir=./ --graph
   |--@ungrouped:
 ```
 
-### Variables
+### Host Variables
 The plugin currently collects 3 variables about the hardware it finds: `serial`, `model`, and `address`. These values are provided as host vars.
 
 Example output using `ansible-inventory` and the provided `sandbox_aci.yml`:
@@ -64,6 +64,9 @@ $ ansible-inventory -i sandbox_aci.yml --playbook-dir=./ --list
 ```
 
 ## Usage
+
+### Variables
+
 You must provide the following information in your inventory:
 | Inventory Variable | Environment Variable | Required | Description |
 | ------------------ | -------------------- | -------- | ----------- |
@@ -71,6 +74,37 @@ You must provide the following information in your inventory:
 | `validate_certs` | `ACI_VERIFY_SSL` | n | If no, SSL certificates will not be validated.
 | `username`       | `ACI_USERNAME`   | y | The username to use for authentication
 | `password`       | `ACI_PASSWORD`   | y | The password to use for authentication
+
+### Ansible Tower
+
+Recommended Tower usage is to consume the plugin via SCM.
+
+- Create a Credential Type that provides `ACI_USERNAME` and `ACI_PASSWORD` as environment variables
+- Create a Credential using the new Credential Type with your APIC login information
+- Create a YAML inventory in your SCM that provides `host`, `validate_certs` (optional), and `plugin: aci`
+- Consume the YAML inventory in Tower (Inventory > Sources > Create Source > Sourced from a Project > Inventory File), and attach your Credential
+
+#### Credendial Type suggestion
+
+Input Configuration
+```
+fields:
+  - id: username
+    type: string
+    label: APIC Username
+    secret: false
+  - id: password
+    type: string
+    label: APIC Password
+    secret: true
+```
+
+Injector Configuration
+```
+env:
+  ACI_PASSWORD: '{{ password }}'
+  ACI_USERNAME: '{{ username }}'
+```
 
 ## Files
 | Name | Description |
