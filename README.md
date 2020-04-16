@@ -111,4 +111,4 @@ env:
 | ---- | ----------- |
 | `inventory_plugins/aci.py` | The main plugin code. Move to where it makes sense in your envrionment/project.
 | `sandbox_aci.yml` | Sample inventory file, using Cisco's always-on public sandbox.
-| `test.yml` | Sample playbook which tests the functionality of the plugin's group and variable output.
+| `tower_api_sample.py` | Sample script which accesses the stored hostvars via the Ansible Tower REST API and prints them to the console.
