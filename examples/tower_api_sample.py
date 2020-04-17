@@ -16,7 +16,7 @@ def main():
     # Enter numeric ID of ACI Inventory
     # Can be found in the URL bar when browsing to the inventory
     # in the web UI after '#/inventories/inventory/'
-    tower_inventory_id = 4
+    tower_inventory_id = input('Inventory ID number: ')
     # Session setup
     session = requests.Session()
     session.auth = (tower_user, tower_pass)
