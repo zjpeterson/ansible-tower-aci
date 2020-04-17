@@ -44,7 +44,7 @@ DOCUMENTATION = '''
             default: False
             required: False
         device_roles:
-            description: Specify which device roles to include in collection.
+            description: Instruct the plugin to only get devices of certain roles.
             type: list
             default:
             - controller

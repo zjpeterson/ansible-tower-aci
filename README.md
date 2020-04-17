@@ -79,7 +79,7 @@ Provide the following information in your inventory:
 | `username`         | `ACI_USERNAME`       | yes      | n/a     | The username to use for authentication
 | `password`         | `ACI_PASSWORD`       | yes      | n/a     | The password to use for authentication
 | `flat`             | n/a                  | no       | `no`      | Instruct the plugin not to create child groups.
-| `device_roles`     | n/a                  | no       | `['controller', 'leaf', 'spine']` | Instruct the plugin to only get certain device roles.
+| `device_roles`     | n/a                  | no       | `['controller', 'leaf', 'spine']` | Instruct the plugin to only get devices of certain roles.
 
 ### Ansible Tower
 
