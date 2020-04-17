@@ -43,6 +43,14 @@ DOCUMENTATION = '''
             type: bool
             default: False
             required: False
+        device_roles:
+            description: Specify which device roles to include in collection.
+            type: list
+            default:
+            - controller
+            - leaf
+            - spine
+            required: False
 '''
 EXAMPLES = '''
 # example aci.yml file
@@ -89,12 +97,14 @@ class InventoryModule(BaseInventoryPlugin):
         root_group_name = self.inventory.add_group('aci_{}'.format(self.get_option('host').replace('.','_')))
         set_vars = ['serial', 'model', 'address', 'role']
         for node in nodes['imdata']:
-            if self.get_option('flat'):
-                group_name = root_group_name
-            else:
-                group_name = self.inventory.add_group(node['fabricNode']['attributes']['role'])
-                self.inventory.add_child(root_group_name, group_name)
-            host_name = self.inventory.add_host(node['fabricNode']['attributes']['name'])
-            self.inventory.add_child(group_name, host_name)
-            for var in set_vars:
-                self.inventory.set_variable(host_name, var, node['fabricNode']['attributes'][var])
+            role = node['fabricNode']['attributes']['role']
+            if role in self.get_option('device_roles'):
+                if self.get_option('flat'):
+                    group_name = root_group_name
+                else:
+                    group_name = self.inventory.add_group(role)
+                    self.inventory.add_child(root_group_name, group_name)
+                host_name = self.inventory.add_host(node['fabricNode']['attributes']['name'])
+                self.inventory.add_child(group_name, host_name)
+                for var in set_vars:
+                    self.inventory.set_variable(host_name, var, node['fabricNode']['attributes'][var])

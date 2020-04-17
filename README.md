@@ -75,10 +75,11 @@ Provide the following information in your inventory:
 | Inventory Variable | Environment Variable | Required | Default | Description |
 | ------------------ | -------------------- | -------- | ------- | ----------- |
 | `host`             | `ACI_HOST`           | yes      | n/a     | IP Address or hostname of APIC resolvable by Ansible control host
-| `validate_certs`   | `ACI_VERIFY_SSL`     | no       | yes     | If no, SSL certificates will not be validated.
+| `validate_certs`   | `ACI_VERIFY_SSL`     | no       | `yes`     | If no, SSL certificates will not be validated.
 | `username`         | `ACI_USERNAME`       | yes      | n/a     | The username to use for authentication
 | `password`         | `ACI_PASSWORD`       | yes      | n/a     | The password to use for authentication
-| `flat`             | n/a                  | no       | no      | Instruct the plugin not to create child groups.
+| `flat`             | n/a                  | no       | `no`      | Instruct the plugin not to create child groups.
+| `device_roles`     | n/a                  | no       | `['controller', 'leaf', 'spine']` | Instruct the plugin to only get certain device roles.
 
 ### Ansible Tower
 
@@ -89,7 +90,7 @@ Recommended Tower usage is to consume the plugin via SCM.
 - Create a YAML inventory in your SCM that provides `host`, `validate_certs` (optional), and `plugin: aci`
 - Consume the YAML inventory in Tower (Inventory > Sources > Create Source > Sourced from a Project > Inventory File), and attach your Credential
 
-#### Credendial Type suggestion
+#### Credential Type suggestion
 
 Input Configuration
 ```
