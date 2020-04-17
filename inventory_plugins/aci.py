@@ -86,7 +86,7 @@ class InventoryModule(BaseInventoryPlugin):
       super(InventoryModule, self).verify_file(path)
       return path.endswith(('aci.yml', 'aci.yaml'))
 
-    def parse(self,inventory,loader,path, cache=True):
+    def parse(self, inventory, loader, path, cache=True):
         super(InventoryModule, self).parse(inventory, loader, path)
         self._read_config_data(path)
 
@@ -94,7 +94,7 @@ class InventoryModule(BaseInventoryPlugin):
         self.aci_login(aci_session, self.get_option('host'), self.get_option('username'), self.get_option('password'))
         nodes = self.aci_get_nodes(aci_session, self.get_option('host'))
 
-        root_group_name = self.inventory.add_group('aci_{}'.format(self.get_option('host').replace('.','_')))
+        root_group_name = self.inventory.add_group('aci_{}'.format(self.get_option('host').replace('.', '_')))
         set_vars = ['serial', 'model', 'address', 'role']
         for node in nodes['imdata']:
             role = node['fabricNode']['attributes']['role']
