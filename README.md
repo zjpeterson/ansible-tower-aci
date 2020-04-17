@@ -30,7 +30,7 @@ $ ansible-inventory -i sandbox_aci.yml --playbook-dir=./ --graph
 ```
 
 ### Host Variables
-The plugin currently collects 3 variables about the hardware it finds: `serial`, `model`, and `address`. These values are provided as host vars.
+The plugin currently collects 3 variables about the hardware it finds: `serial`, `model`, `role`, and `address`. These values are provided as host vars.
 
 Example output using `ansible-inventory` and the provided `sandbox_aci.yml`:
 ```
@@ -41,21 +41,25 @@ $ ansible-inventory -i sandbox_aci.yml --playbook-dir=./ --list
             "apic1": {
                 "address": "10.0.0.1",
                 "model": "VMware Virtual Platform",
+                "role": "controller",
                 "serial": "TEP-1-1"
             },
             "leaf-101": {
                 "address": "10.0.144.64",
                 "model": "N9K-C9396PX",
+                "role": "leaf",
                 "serial": "TEP-1-101"
             },
             "leaf-102": {
                 "address": "10.0.144.66",
                 "model": "N9K-C9396PX",
+                "role": "leaf",
                 "serial": "TEP-1-102"
             },
             "spine-201": {
                 "address": "10.0.144.65",
                 "model": "N9K-C9508",
+                "role": "spine",
                 "serial": "TEP-1-103"
             }
         }
@@ -67,13 +71,14 @@ $ ansible-inventory -i sandbox_aci.yml --playbook-dir=./ --list
 
 ### Variables
 
-You must provide the following information in your inventory:
-| Inventory Variable | Environment Variable | Required | Description |
-| ------------------ | -------------------- | -------- | ----------- |
-| `host`           | `ACI_HOST`       | y | IP Address or hostname of APIC resolvable by Ansible control host
-| `validate_certs` | `ACI_VERIFY_SSL` | n | If no, SSL certificates will not be validated.
-| `username`       | `ACI_USERNAME`   | y | The username to use for authentication
-| `password`       | `ACI_PASSWORD`   | y | The password to use for authentication
+Provide the following information in your inventory:
+| Inventory Variable | Environment Variable | Required | Default | Description |
+| ------------------ | -------------------- | -------- | ------- | ----------- |
+| `host`             | `ACI_HOST`           | yes      | n/a     | IP Address or hostname of APIC resolvable by Ansible control host
+| `validate_certs`   | `ACI_VERIFY_SSL`     | no       | yes     | If no, SSL certificates will not be validated.
+| `username`         | `ACI_USERNAME`       | yes      | n/a     | The username to use for authentication
+| `password`         | `ACI_PASSWORD`       | yes      | n/a     | The password to use for authentication
+| `flat`             | n/a                  | no       | no      | Instruct the plugin not to create child groups.
 
 ### Ansible Tower
 
