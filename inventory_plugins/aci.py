@@ -83,8 +83,8 @@ class InventoryModule(BaseInventoryPlugin):
         return json.loads(response.read())
 
     def verify_file(self, path):
-      super(InventoryModule, self).verify_file(path)
-      return path.endswith(('aci.yml', 'aci.yaml'))
+        super(InventoryModule, self).verify_file(path)
+        return path.endswith(('aci.yml', 'aci.yaml'))
 
     def parse(self, inventory, loader, path, cache=True):
         super(InventoryModule, self).parse(inventory, loader, path)
