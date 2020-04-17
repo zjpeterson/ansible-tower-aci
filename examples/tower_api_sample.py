@@ -6,12 +6,13 @@
 
 import requests
 import json
+from getpass import getpass
 
 def main():
     # Enter details of Tower environment
-    tower_user = 'toweruser'
-    tower_pass = 'towerpass'
-    tower_host = 'tower.example.com'
+    tower_host = input('Tower Hostname: ')
+    tower_user = input('Tower Username: ')
+    tower_pass = getpass('Tower Password: ')
     # Enter numeric ID of ACI Inventory
     # Can be found in the URL bar when browsing to the inventory
     # in the web UI after '#/inventories/inventory/'
