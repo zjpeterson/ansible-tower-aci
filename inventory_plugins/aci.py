@@ -38,6 +38,11 @@ DOCUMENTATION = '''
             default: True
             required: False
             aliases: [ verify_ssl ]
+        flat:
+            description: Instruct the plugin not to create child groups.
+            type: bool
+            default: False
+            required: False
 '''
 EXAMPLES = '''
 # example aci.yml file
@@ -82,10 +87,13 @@ class InventoryModule(BaseInventoryPlugin):
         nodes = self.aci_get_nodes(aci_session, self.get_option('host'))
 
         root_group_name = self.inventory.add_group('aci_{}'.format(self.get_option('host').replace('.','_')))
-        set_vars = ['serial', 'model', 'address']
+        set_vars = ['serial', 'model', 'address', 'role']
         for node in nodes['imdata']:
-            group_name = self.inventory.add_group(node['fabricNode']['attributes']['role'])
-            self.inventory.add_child(root_group_name, group_name)
+            if self.get_option('flat'):
+                group_name = root_group_name
+            else:
+                group_name = self.inventory.add_group(node['fabricNode']['attributes']['role'])
+                self.inventory.add_child(root_group_name, group_name)
             host_name = self.inventory.add_host(node['fabricNode']['attributes']['name'])
             self.inventory.add_child(group_name, host_name)
             for var in set_vars:
