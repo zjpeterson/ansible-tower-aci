@@ -1,5 +1,5 @@
 DOCUMENTATION = '''
-    name: aci
+    name: zjpeterson.aci_inventory
     plugin_type: inventory
     author:
         - Zach Peterson (@zjpeterson)
@@ -55,7 +55,7 @@ DOCUMENTATION = '''
 EXAMPLES = '''
 # example aci.yml file
 ---
-plugin: aci
+plugin: zjpeterson.aci_inventory
 host: sandboxapicdc.cisco.com
 username: admin
 password: ciscopsdt
