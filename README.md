@@ -9,6 +9,58 @@ A couple reasons why you may want to use this:
 
 - Your organization uses a CMDB, and expects the source of truth to come from your infrastructure's management software (in this case Ansible Tower), rather than the other way around. However, there is not hardware-level data avilable in Ansible Tower to consume in this way. Cached inventory facts can make this information available via the Ansible Tower REST API.
 
+## Usage
+
+### Variables
+
+Provide the following information in your inventory:
+| Inventory Variable | Environment Variable | Required | Default                           | Description                                                       |
+| ------------------ | -------------------- | -------- | -------                           | -----------                                                       |
+| `host`             | `ACI_HOST`           | yes      | n/a                               | IP Address or hostname of APIC resolvable by Ansible control host |
+| `validate_certs`   | `ACI_VERIFY_SSL`     | no       | `yes`                             | If no, SSL certificates will not be validated                     |
+| `username`         | `ACI_USERNAME`       | yes      | n/a                               | The username to use for authentication                            |
+| `password`         | `ACI_PASSWORD`       | yes      | n/a                               | The password to use for authentication                            |
+| `flat`             | n/a                  | no       | `no`                              | Instruct the plugin not to create child groups                    |
+| `device_roles`     | n/a                  | no       | `['controller', 'leaf', 'spine']` | Instruct the plugin to only get devices of certain roles          |
+
+### Ansible Tower
+
+Recommended Tower usage is to consume the plugin via SCM.
+
+- Create a Credential Type that provides `ACI_USERNAME` and `ACI_PASSWORD` as environment variables
+- Create a Credential using the new Credential Type with your APIC login information
+- Create a YAML inventory in your SCM that provides `host`, `validate_certs` (optional), and `plugin: aci`
+- Consume the YAML inventory in Tower (Inventory > Sources > Create Source > Sourced from a Project > Inventory File), and attach your Credential
+
+#### Credential Type suggestion
+
+Input Configuration
+```
+fields:
+  - id: username
+    type: string
+    label: APIC Username
+    secret: false
+  - id: password
+    type: string
+    label: APIC Password
+    secret: true
+```
+
+Injector Configuration
+```
+env:
+  ACI_PASSWORD: '{{ password }}'
+  ACI_USERNAME: '{{ username }}'
+```
+
+## Files
+| Name                       | Description                                                                                                     |
+| ----                       | -----------                                                                                                     |
+| `inventory_plugins/aci.py` | The main plugin code. Move to where it makes sense in your envrionment/project.                                 |
+| `sandbox_aci.yml`          | Sample inventory file, using Cisco's always-on public sandbox.                                                  |
+| `tower_api_sample.py`      | Sample script which accesses the stored hostvars via the Ansible Tower REST API and prints them to the console. |
+
 ## Inventory Structure
 
 ### Groups
@@ -66,55 +118,3 @@ $ ansible-inventory -i sandbox_aci.yml --playbook-dir=./ --list
     },
 [...]
 ```
-
-## Usage
-
-### Variables
-
-Provide the following information in your inventory:
-| Inventory Variable | Environment Variable | Required | Default | Description |
-| ------------------ | -------------------- | -------- | ------- | ----------- |
-| `host`             | `ACI_HOST`           | yes      | n/a     | IP Address or hostname of APIC resolvable by Ansible control host
-| `validate_certs`   | `ACI_VERIFY_SSL`     | no       | `yes`     | If no, SSL certificates will not be validated.
-| `username`         | `ACI_USERNAME`       | yes      | n/a     | The username to use for authentication
-| `password`         | `ACI_PASSWORD`       | yes      | n/a     | The password to use for authentication
-| `flat`             | n/a                  | no       | `no`      | Instruct the plugin not to create child groups.
-| `device_roles`     | n/a                  | no       | `['controller', 'leaf', 'spine']` | Instruct the plugin to only get devices of certain roles.
-
-### Ansible Tower
-
-Recommended Tower usage is to consume the plugin via SCM.
-
-- Create a Credential Type that provides `ACI_USERNAME` and `ACI_PASSWORD` as environment variables
-- Create a Credential using the new Credential Type with your APIC login information
-- Create a YAML inventory in your SCM that provides `host`, `validate_certs` (optional), and `plugin: aci`
-- Consume the YAML inventory in Tower (Inventory > Sources > Create Source > Sourced from a Project > Inventory File), and attach your Credential
-
-#### Credential Type suggestion
-
-Input Configuration
-```
-fields:
-  - id: username
-    type: string
-    label: APIC Username
-    secret: false
-  - id: password
-    type: string
-    label: APIC Password
-    secret: true
-```
-
-Injector Configuration
-```
-env:
-  ACI_PASSWORD: '{{ password }}'
-  ACI_USERNAME: '{{ username }}'
-```
-
-## Files
-| Name | Description |
-| ---- | ----------- |
-| `inventory_plugins/aci.py` | The main plugin code. Move to where it makes sense in your envrionment/project.
-| `sandbox_aci.yml` | Sample inventory file, using Cisco's always-on public sandbox.
-| `tower_api_sample.py` | Sample script which accesses the stored hostvars via the Ansible Tower REST API and prints them to the console.
