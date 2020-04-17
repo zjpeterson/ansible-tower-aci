@@ -70,7 +70,7 @@ import json
 
 class InventoryModule(BaseInventoryPlugin):
 
-    NAME = 'aci'
+    NAME = 'zjpeterson.aci_inventory'
 
     def aci_login(self, aci_session, apic, username, password):
         url = 'https://{}/api/aaaLogin.json'.format(apic)
