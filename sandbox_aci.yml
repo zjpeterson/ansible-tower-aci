@@ -1,7 +1,7 @@
 ---
 # Example inventory file
-# Note: This sandbox system has been observed to report its spine switch as role "unsupported"
-# This issue will result in a child group called "unsupported" rather than the expected group "spine"
+# Cisco DevNet public ACI Sandbox
+# Warning: YMMV. Public = unpredictable.
 plugin: aci
 host: sandboxapicdc.cisco.com
 username: admin
