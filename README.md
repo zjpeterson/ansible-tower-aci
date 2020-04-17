@@ -1,7 +1,7 @@
 # ansible-aci-inventory
 Ansible dynamic inventory plugin for use with Cisco ACI.
 
-Available on Ansible Galaxy as a Collection: `zjpeterson.aci_inventory`
+Available on Ansible Galaxy as a Collection: [zjpeterson.aci_inventory](https://galaxy.ansible.com/zjpeterson/aci_inventory)
 
 ## Overview
 When given an APIC target, this plugin builds an Ansible inventory of the physical hardware involved in the associated ACI fabric.
