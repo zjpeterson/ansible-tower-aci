@@ -7,3 +7,8 @@ host: sandboxapicdc.cisco.com
 username: admin
 password: ciscopsdt
 validate_certs: no
+flat: no
+device_roles:
+  - controller
+  - spine
+  - leaf
