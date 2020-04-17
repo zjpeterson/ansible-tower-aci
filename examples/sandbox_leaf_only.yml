@@ -1,0 +1,12 @@
+---
+# Example inventory file
+# Cisco DevNet public ACI Sandbox
+# Warning: YMMV. Public = unpredictable.
+plugin: aci
+host: sandboxapicdc.cisco.com
+username: admin
+password: ciscopsdt
+validate_certs: no
+flat: yes
+device_roles:
+  - leaf

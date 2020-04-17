@@ -9,9 +9,9 @@ import json
 
 def main():
     # Enter details of Tower environment
-    tower_user = 'toweruser'
-    tower_pass = 'towerpass'
-    tower_host = 'tower.example.com'
+    tower_user = 'zach'
+    tower_pass = 'M7000p9!'
+    tower_host = '10.15.108.156'
     # Enter numeric ID of ACI Inventory
     # Can be found in the URL bar when browsing to the inventory
     # in the web UI after '#/inventories/inventory/'
