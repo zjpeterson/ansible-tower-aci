@@ -29,7 +29,8 @@ Recommended Tower usage is to consume the plugin via SCM.
 
 - Create a Credential Type that provides `ACI_USERNAME` and `ACI_PASSWORD` as environment variables
 - Create a Credential using the new Credential Type with your APIC login information
-- Create a YAML inventory in your SCM that provides `host`, `validate_certs` (optional), and `plugin: aci`
+- Create a YAML inventory in your SCM that provides required variables (see table and examples under `examples/*aci.yml`), along with `plugin: zjpeterson.aci_inventory`
+- Create a requirements file `collections/requirements.yml` in your SCM (see example `examples/collections/requirements.yml`)
 - Consume the YAML inventory in Tower (Inventory > Sources > Create Source > Sourced from a Project > Inventory File), and attach your Credential
 
 ### Credential Type suggestion
@@ -55,11 +56,14 @@ env:
 ```
 
 ## Files
-| Name                       | Description                                                                                                     |
-| ----                       | -----------                                                                                                     |
-| `inventory_plugins/aci.py` | The main plugin code. If NOT using as a collection, move to where it makes sense in your envrionment/project.   |
-| `sandbox_aci.yml`          | Sample inventory file, using Cisco's always-on public sandbox.                                                  |
-| `tower_api_sample.py`      | Sample script which accesses the stored hostvars via the Ansible Tower REST API and prints them to the console. |
+| Name                                    | Description |
+| ----                                    | ----------- |
+| `plugins/inventory/aci_inventory.py`    | The main plugin code. |
+| `galaxy.yml`                            | Ansible Galaxy metadata for Collection packaging. |
+| `examples/tower_api_sample.py`          | Sample script which accesses the stored hostvars via the Ansible Tower REST API and prints them to the console. |
+| `examples/collections/requirements.yml` | Example `requirements.yml` file to consume the Collection. |
+| `examples/sandbox_aci.yml`              | Sample inventory file, using Cisco's always-on public sandbox. |
+| `examples/leaf_only_sandbox_aci.yml`    | Same as above, but uses optional parameters to produce a flat list of only leaf switches. |
 
 ## Inventory Structure
 
@@ -80,6 +84,7 @@ $ ansible-inventory -i sandbox_aci.yml --playbook-dir=./ --graph
   |  |  |--spine-1
   |--@ungrouped:
 ```
+You can forego the creation of child groups by providing `flat: yes` in your YAML inventory.
 
 ### Host Variables
 The plugin currently collects 3 variables about the hardware it finds: `serial`, `model`, `role`, and `address`. These values are provided as host vars.
