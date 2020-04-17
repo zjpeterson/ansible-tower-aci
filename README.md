@@ -32,7 +32,7 @@ Recommended Tower usage is to consume the plugin via SCM.
 - Create a YAML inventory in your SCM that provides `host`, `validate_certs` (optional), and `plugin: aci`
 - Consume the YAML inventory in Tower (Inventory > Sources > Create Source > Sourced from a Project > Inventory File), and attach your Credential
 
-#### Credential Type suggestion
+### Credential Type suggestion
 
 Input Configuration
 ```
@@ -57,7 +57,7 @@ env:
 ## Files
 | Name                       | Description                                                                                                     |
 | ----                       | -----------                                                                                                     |
-| `inventory_plugins/aci.py` | The main plugin code. Move to where it makes sense in your envrionment/project.                                 |
+| `inventory_plugins/aci.py` | The main plugin code. If NOT using as a collection, move to where it makes sense in your envrionment/project.   |
 | `sandbox_aci.yml`          | Sample inventory file, using Cisco's always-on public sandbox.                                                  |
 | `tower_api_sample.py`      | Sample script which accesses the stored hostvars via the Ansible Tower REST API and prints them to the console. |
 
