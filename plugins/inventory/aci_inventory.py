@@ -1,5 +1,5 @@
 DOCUMENTATION = '''
-    name: zjpeterson.aci_inventory
+    name: aci_inventory
     plugin_type: inventory
     author:
         - Zach Peterson (@zjpeterson)
@@ -10,6 +10,10 @@ DOCUMENTATION = '''
         - Use case: Build an unused inventory for assistance with Ansible Tower licensing
         - Use case: Enable Ansible Tower as a source of hardware information
     options:
+        plugin:
+            description: Ensures the source file is for the aci_inventory plugin
+            required: True
+            choices: ['zjpeterson.aci_inventory.aci_inventory']
         host:
             description: IP Address or hostname of APIC resolvable by Ansible control host.
             type: string
@@ -55,7 +59,7 @@ DOCUMENTATION = '''
 EXAMPLES = '''
 # example aci.yml file
 ---
-plugin: zjpeterson.aci_inventory
+plugin: zjpeterson.aci_inventory.aci_inventory
 host: sandboxapicdc.cisco.com
 username: admin
 password: ciscopsdt
@@ -70,7 +74,7 @@ import json
 
 class InventoryModule(BaseInventoryPlugin):
 
-    NAME = 'zjpeterson.aci_inventory'
+    NAME = 'zjpeterson.aci_inventory.aci_inventory'
 
     def aci_login(self, aci_session, apic, username, password):
         url = 'https://{}/api/aaaLogin.json'.format(apic)
@@ -84,7 +88,7 @@ class InventoryModule(BaseInventoryPlugin):
 
     def verify_file(self, path):
         super(InventoryModule, self).verify_file(path)
-        return path.endswith(('aci.yml', 'aci.yaml'))
+        return path.endswith(('aci_inventory.yml', 'aci_inventory.yaml', 'aci.yml', 'aci.yaml'))
 
     def parse(self, inventory, loader, path, cache=True):
         super(InventoryModule, self).parse(inventory, loader, path)
