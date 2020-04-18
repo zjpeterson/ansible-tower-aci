@@ -16,15 +16,19 @@ A couple reasons why you may want to use this:
 
 ### Variables
 
-Provide the following information in your inventory:
-| Inventory Variable | Environment Variable | Required | Default                           | Description                                                       |
-| ------------------ | -------------------- | -------- | -------                           | -----------                                                       |
-| `host`             | `ACI_HOST`           | yes      | n/a                               | IP Address or hostname of APIC resolvable by Ansible control host |
-| `validate_certs`   | `ACI_VERIFY_SSL`     | no       | `yes`                             | If no, SSL certificates will not be validated                     |
-| `username`         | `ACI_USERNAME`       | yes      | n/a                               | The username to use for authentication                            |
-| `password`         | `ACI_PASSWORD`       | yes      | n/a                               | The password to use for authentication                            |
-| `flat`             | n/a                  | no       | `no`                              | Instruct the plugin not to create child groups                    |
-| `device_roles`     | n/a                  | no       | `['controller', 'leaf', 'spine']` | Instruct the plugin to only get devices of certain roles          |
+Provide the following information in your YAML inventory:
+
+| Inventory Variable | Environment Variable | Required | Default                                  | Description                                                       |
+| ------------------ | -------------------- | -------- | ---------------------------------------- | ----------------------------------------------------------------- |
+| `plugin`           | n/a                  | yes      | `zjpeterson.aci_inventory.aci_inventory` | The fully-qualified name of the plugin                            |
+| `host`             | `ACI_HOST`           | yes      | n/a                                      | IP Address or hostname of APIC resolvable by Ansible control host |
+| `validate_certs`   | `ACI_VERIFY_SSL`     | no       | `yes`                                    | If no, SSL certificates will not be validated                     |
+| `username`         | `ACI_USERNAME`       | yes      | n/a                                      | The username to use for authentication                            |
+| `password`         | `ACI_PASSWORD`       | yes      | n/a                                      | The password to use for authentication                            |
+| `flat`             | n/a                  | no       | `no`                                     | Instruct the plugin not to create child groups                    |
+| `device_roles`     | n/a                  | no       | `['controller', 'leaf', 'spine']`        | Instruct the plugin to only get devices of certain roles          |
+
+YAML inventory file names must end in `aci.yml` or `aci_inventory.yml` to be validated by the plugin. A `.yaml` extension is also acceptable.
 
 ### Ansible Tower
 
@@ -59,13 +63,13 @@ env:
 ```
 
 ## Files
-| Name                                    | Description |
-| ----                                    | ----------- |
-| `plugins/inventory/aci_inventory.py`    | The main plugin code. |
-| `galaxy.yml`                            | Ansible Galaxy metadata for Collection packaging. |
-| `examples/tower_api_sample.py`          | Sample script which accesses the stored hostvars via the Ansible Tower REST API and prints them to the console. |
-| `examples/collections/requirements.yml` | Example `requirements.yml` file to consume the Collection. |
-| `examples/sandbox_aci.yml`              | Sample inventory file, using Cisco's always-on public sandbox. |
+| Name                                    | Description                                                                               |
+| --------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `plugins/inventory/aci_inventory.py`    | The main plugin code.                                                                     |
+| `galaxy.yml`                            | Ansible Galaxy metadata for Collection packaging.                                         |
+| `examples/tower_api_sample.py`          | Sample script to access the stored hostvars via the Ansible Tower REST API.               |
+| `examples/collections/requirements.yml` | Example `requirements.yml` file to consume the Collection.                                |
+| `examples/sandbox_aci.yml`              | Sample inventory file, using Cisco's always-on public sandbox.                            |
 | `examples/leaf_only_sandbox_aci.yml`    | Same as above, but uses optional parameters to produce a flat list of only leaf switches. |
 
 ## Inventory Structure
