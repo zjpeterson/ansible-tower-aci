@@ -2,7 +2,7 @@
 # Example inventory file
 # Cisco DevNet public ACI Sandbox
 # Warning: Public = unpredictable
-plugin: zjpeterson.aci_inventory.aci_inventory
+plugin: zjpeterson.aci.aci_inventory
 host: sandboxapicdc.cisco.com
 username: admin
 password: ciscopsdt
