@@ -1,4 +1,4 @@
-# ansible-aci-inventory
+# ansible-aci
 Ansible Collection for use with [Cisco ACI](https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html)
 
 Available on Ansible Galaxy as a Collection: [zjpeterson.aci](https://galaxy.ansible.com/zjpeterson/aci)
