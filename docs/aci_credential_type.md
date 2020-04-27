@@ -29,7 +29,7 @@ The Extra Var support is intended to be used in playbooks where ACI modules requ
 
 ## Dependencies
 
-Requires the `awx.awx` collection. See: `examples/aci_credential_type/collections/requirements.yml`
+Requires the `awx.awx` collection.
 
 ## Variables
 
