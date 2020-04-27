@@ -1,0 +1,26 @@
+{
+    "fields": [
+        {
+            "id": "username",
+            "type": "string",
+            "label": "APIC Username",
+            "secret": false
+        },
+        {
+            "id": "password",
+            "type": "string",
+            "label": "APIC Password",
+            "secret": true
+        },
+        {
+            "id": "private_key",
+            "type": "string",
+            "label": "APIC Private Key",
+            "secret": true,
+            "multiline": true
+        }
+    ],
+    "required": [
+        "username"
+    ]
+}
