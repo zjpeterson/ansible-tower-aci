@@ -1,0 +1,6 @@
+galaxy_info:
+  role_name: aci_credential_type
+  author: Zach Peterson (@zjpeterson)
+  description: Creates an Ansible Tower Credential Type for use with Cisco ACI
+  license: GPLv3
+  min_ansible_version: 2.9
