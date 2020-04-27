@@ -4,7 +4,7 @@ version: 0.1.0
 readme: README.md
 authors:
   - Zach Peterson (@zjpeterson)
-description: Ansible dynamic inventory plugin for Cisco ACI
+description: Ansible collection for use with Cisco ACI
 license_file: LICENSE
 tags:
   - cisco
@@ -15,3 +15,4 @@ tags:
   - sdn
 repository: https://github.com/zjpeterson/ansible-aci
 issues: https://github.com/zjpeterson/ansible-aci/issues
+documentation: https://github.com/zjpeterson/ansible-aci/tree/master/docs
