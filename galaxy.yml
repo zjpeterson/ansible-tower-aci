@@ -1,6 +1,6 @@
 namespace: zjpeterson
-name: aci_inventory
-version: 0.3.0
+name: aci
+version: 0.1.0
 readme: README.md
 authors:
   - Zach Peterson (@zjpeterson)
@@ -10,7 +10,8 @@ tags:
   - cisco
   - aci
   - collection
+  - inventory
   - networking
   - sdn
-repository: https://github.com/zjpeterson/ansible-aci-inventory
-issues: https://github.com/zjpeterson/ansible-aci-inventory/issues
+repository: https://github.com/zjpeterson/ansible-aci
+issues: https://github.com/zjpeterson/ansible-aci/issues
