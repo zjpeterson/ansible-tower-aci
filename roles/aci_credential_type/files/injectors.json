@@ -1,0 +1,12 @@
+{
+    "env": {
+        "ACI_USERNAME": "{{ username }}",
+        "ACI_PASSWORD": "{{ password }}",
+        "ACI_PRIVATE_KEY": "{{ private_key }}"
+    },
+    "extra_vars": {
+        "aci_username": "{{ username }}",
+        "aci_password": "{{ password }}",
+        "aci_private_key": "{{ private_key }}"
+    }
+}

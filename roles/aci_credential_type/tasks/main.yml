@@ -1,0 +1,7 @@
+---
+- name: Ensure credential type {{ tower_cred_type }} exists
+  awx.awx.tower_credential_type:
+    name: "{{ tower_cred_type }}"
+    kind: net
+    inputs: "{{ lookup('file', 'inputs.json') }}"
+    injectors: "{{ lookup('file', 'injectors.json') }}"
