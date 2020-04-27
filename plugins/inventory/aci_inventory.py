@@ -13,7 +13,7 @@ DOCUMENTATION = '''
         plugin:
             description: Ensures the source file is for the aci_inventory plugin
             required: True
-            choices: ['zjpeterson.aci_inventory.aci_inventory']
+            choices: ['zjpeterson.aci.aci_inventory']
         host:
             description: IP Address or hostname of APIC resolvable by Ansible control host.
             type: string
@@ -59,7 +59,7 @@ DOCUMENTATION = '''
 EXAMPLES = '''
 # example aci.yml file
 ---
-plugin: zjpeterson.aci_inventory.aci_inventory
+plugin: zjpeterson.aci.aci_inventory
 host: sandboxapicdc.cisco.com
 username: admin
 password: ciscopsdt
@@ -74,7 +74,7 @@ import json
 
 class InventoryModule(BaseInventoryPlugin):
 
-    NAME = 'zjpeterson.aci_inventory.aci_inventory'
+    NAME = 'zjpeterson.aci.aci_inventory'
 
     def aci_login(self, aci_session, apic, username, password):
         url = 'https://{}/api/aaaLogin.json'.format(apic)
