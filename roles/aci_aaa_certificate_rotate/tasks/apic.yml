@@ -1,0 +1,11 @@
+---
+- name: Apply certificate to user {{ apic_user }}
+  cisco.aci.aci_aaa_user_certificate:
+    host: "{{ ansible_host }}"
+    validate_certs: "{{ validate_certs | default(omit) }}"
+    username: "{{ aci_username }}"
+    password: "{{ aci_password | default(None) or omit }}"
+    private_key: "{{ aci_private_key | default(None) or omit }}"
+    aaa_user: "{{ apic_user }}"
+    certificate_name: "{{ apic_user }}"
+    certificate: "{{ lookup('file', role_path + '/' + apic_user + '.cer') }}"

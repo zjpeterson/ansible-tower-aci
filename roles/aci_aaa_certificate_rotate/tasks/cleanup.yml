@@ -1,0 +1,9 @@
+---
+- name: Clean up files
+  file:
+    state: absent
+    path: "{{ role_path }}/{{ aci_username }}.{{ item }}"
+  loop:
+    - pem
+    - csr
+    - cer

@@ -1,0 +1,9 @@
+---
+apic_user: ansible
+apic_user_permissions:
+  - domain: all
+    role: aaa
+    access: writePriv
+tower_cred_name: ACI Dev
+tower_cred_org: Default
+tower_cred_type: Cisco ACI

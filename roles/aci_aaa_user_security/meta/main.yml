@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  role_name: aci_aaa_user_security
+  author: Zach Peterson (@zjpeterson)
+  description: Creates/maintains an APIC user to use with Ansible, and applies desired security roles. Updates Ansible Tower with the password.
+  license: GPLv3
+  min_ansible_version: 2.9

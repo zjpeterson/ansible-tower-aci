@@ -1,0 +1,26 @@
+---
+- name: Apply certificate to APIC
+  hosts: apic
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - include_role:
+      name: zjpeterson.aci.aci_aaa_certificate_rotate
+      tasks_from: generate.yml
+  - include_role:
+      name: zjpeterson.aci.aci_aaa_certificate_rotate
+      tasks_from: apic.yml
+
+- name: Apply key and passphrase to Tower
+  hosts: tower
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - include_role:
+      name: zjpeterson.aci.aci_aaa_certificate_rotate
+      tasks_from: tower.yml
+  - include_role:
+      name: zjpeterson.aci.aci_aaa_certificate_rotate
+      tasks_from: cleanup.yml

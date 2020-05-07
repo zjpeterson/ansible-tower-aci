@@ -1,0 +1,28 @@
+---
+# note: May 2020
+# module approach requires in-progress updates to community.crypto collection
+# therefore, this file not yet in use
+
+- name: Generate private key
+  community.crypto.openssl_privatekey:
+    path: "{{ role_path }}/{{ apic_user }}.pem"
+    type: "{{ key_type | upper }}"
+    size: "{{ key_size }}"
+
+- name: Generate CSR
+  community.crypto.openssl_csr:
+    path: "{{ role_path }}/{{ apic_user }}.csr"
+    privatekey_path: "{{ role_path }}/{{ apic_user }}.pem"
+    common_name: "{{ apic_user }}"
+    organization_name: "{{ cert_organization }}"
+    country_name: "{{ cert_country }}"
+
+- name: Generate self-signed certificate
+  community.crypto.x509_certificate:
+    path: "{{ role_path }}/{{ apic_user }}.cer"
+    csr_path: "{{ role_path }}/{{ apic_user }}.csr"
+    privatekey_path: "{{ role_path }}/{{ apic_user }}.pem"
+    provider: selfsigned
+    selfsigned_not_before: "-5m"
+    selfsigned_not_after: "+{{ cert_days }}d"
+  
