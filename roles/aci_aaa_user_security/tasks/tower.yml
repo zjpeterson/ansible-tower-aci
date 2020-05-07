@@ -1,0 +1,9 @@
+---
+- name: Apply user info to credential {{ tower_cred_name }}
+  awx.awx.tower_credential:
+    name: "{{ tower_cred_name }}"
+    organization: "{{ tower_cred_org }}"
+    credential_type: "{{ tower_cred_type }}"
+    inputs:
+      username: "{{ apic_user }}"
+      password: "{{ hostvars[groups['apic'][0]]['apic_pass'] }}"

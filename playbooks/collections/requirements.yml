@@ -1,4 +1,5 @@
 ---
 collections:
   - zjpeterson.aci
+  - cisco.aci
   - awx.awx

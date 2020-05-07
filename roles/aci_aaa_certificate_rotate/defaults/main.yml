@@ -1,0 +1,10 @@
+---
+apic_user: ansible
+key_type: rsa
+key_size: 4096
+cert_days: 3650
+cert_organization: Red Hat
+cert_country: US
+tower_cred_name: ACI Dev
+tower_cred_org: Default
+tower_cred_type: Cisco ACI

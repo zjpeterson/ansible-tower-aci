@@ -1,0 +1,27 @@
+---
+- name: Generate a password for {{ apic_user }}
+  set_fact:
+    apic_pass: "{{ lookup('password', '/dev/null length=32') }}"
+  no_log: yes
+
+- name: Ensure user {{ apic_user }} exists
+  cisco.aci.aci_aaa_user:
+    host: "{{ ansible_host }}"
+    validate_certs: "{{ validate_certs | default(omit) }}"
+    username: "{{ aci_username }}"
+    private_key: "{{ aci_private_key | default(None) or omit }}"
+    password: "{{ aci_password | default(None) or omit }}"
+    aaa_user: "{{ apic_user }}"
+    aaa_password: "{{ apic_pass }}"
+
+- name: Apply permissions to {{ apic_user }}
+  cisco.aci.aci_rest:
+    host: "{{ ansible_host }}"
+    validate_certs: "{{ validate_certs | default(omit) }}"
+    username: "{{ aci_username }}"
+    private_key: "{{ aci_private_key | default(None) or omit }}"
+    password: "{{ aci_password | default(None) or omit }}"
+    method: post
+    path: /api/node/mo/uni/userext/user-{{ apic_user }}/userdomain-{{ item.domain }}.json
+    content: "{{ lookup('template', 'aaaUserDomain.json.j2') }}"
+  loop: "{{ apic_user_permissions }}"

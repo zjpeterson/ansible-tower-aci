@@ -1,0 +1,24 @@
+{
+    "aaaUserDomain": {
+        "attributes": {
+            "dn":"uni/userext/user-{{ apic_user }}/userdomain-{{ item.domain }}",
+            "name":"{{ item.domain }}",
+            "rn":"userdomain-{{ item.domain }}",
+            "status":"created,modified"
+        },
+        "children": [
+	        {
+                "aaaUserRole": {
+                    "attributes": {
+                        "dn":"uni/userext/user-{{ apic_user }}/userdomain-{{ item.domain }}/role-{{ item.role }}",
+                        "name":"{{ item.role }}",
+                        "privType":"{{ item.access }}",
+                        "rn":"role-{{ item.role }}",
+                        "status":"created,modified"
+                    },
+                "children": []
+                }
+            }
+        ]
+    }
+}

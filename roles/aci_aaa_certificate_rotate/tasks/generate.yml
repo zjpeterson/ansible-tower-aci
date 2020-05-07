@@ -1,0 +1,14 @@
+---
+# a true module-based approach will be viable soon - see generate_module.yml
+
+- name: Generate key and certificate
+  command: >
+    openssl req
+    -new
+    -newkey {{ key_type }}:{{ key_size }}
+    -days {{ cert_days }}
+    -nodes
+    -x509
+    -keyout {{ role_path }}/{{ apic_user }}.pem
+    -out {{ role_path }}/{{ apic_user }}.cer
+    -subj '/CN={{ apic_user }}/O={{ cert_organization }}/C={{ cert_country }}'

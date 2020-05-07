@@ -1,0 +1,21 @@
+---
+- name: Create user
+  hosts: apic
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - include_role:
+      name: zjpeterson.aci.aci_aaa_user_security
+      tasks_from: apic.yml
+
+- name: Create/update Tower credential
+  hosts: tower
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - include_role:
+      name: zjpeterson.aci.aci_aaa_user_security
+      tasks_from: tower.yml
+  

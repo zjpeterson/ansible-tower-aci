@@ -1,0 +1,7 @@
+---
+galaxy_info:
+  role_name: aci_aaa_certificate_rotate
+  author: Zach Peterson (@zjpeterson)
+  description: Generates a new x509 certificate + RSA key pair, then applies the certificate to an APIC user. Updates Ansible Tower with the Private Key.
+  license: GPLv3
+  min_ansible_version: 2.9
