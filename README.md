@@ -7,7 +7,7 @@ Available on Ansible Galaxy as a Collection: [zjpeterson.aci](https://galaxy.ans
 
 ### Plugins
 
-Please reference the full documentation under `docs/`.
+Please reference the full documentation under `docs/` and the examples under `examples/`.
 
 | Plugin          | Description                                                                                 |
 | --------------- | ------------------------------------------------------------------------------------------- |
