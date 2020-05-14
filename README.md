@@ -9,19 +9,19 @@ Available on Ansible Galaxy as a Collection: [zjpeterson.aci](https://galaxy.ans
 
 Please reference the full documentation under `docs/` and the examples under `examples/`.
 
-| Plugin          | Description                                                                                 |
-| --------------- | ------------------------------------------------------------------------------------------- |
-| `aci_inventory` | Builds an Ansible inventory of the physical hardware involved in the associated ACI fabric. |
+| Plugin | Description |
+| --- | --- |
+| [aci_inventory](./docs/aci_inventory) | Builds an Ansible inventory of the physical hardware involved in the associated ACI fabric. |
 
 ### Roles
 
 Please reference the full documentation under `docs/` and the example playbooks under `playbooks/`.
 
-| Role                         | Description                                                                                        |
-| ---------------------------- | -------------------------------------------------------------------------------------------------- |
-| `aci_tower_credential_type`  | Creates an Ansible Tower Credential Type for Cisco ACI.                                            |
-| `aci_aaa_user_security`      | Creates/maintains an APIC user to use with Ansible, applies desired security roles, updates Tower. |
-| `aci_aaa_certificate_rotate` | Generates a new x509 certificate + RSA key pair, applies it to an APIC user, updates Tower.        |
+| Role | Description |
+| --- | --- |
+| [aci_tower_credential_type](./docs/aci_tower_credential_type) | Creates an Ansible Tower Credential Type for Cisco ACI. |
+| [aci_aaa_user_security](./docs/aci_aaa_user_security) | Creates/maintains an APIC user to use with Ansible, applies desired security roles, updates Tower. |
+| [aci_aaa_certificate_rotate](./docs/aci_aaa_certificate_rotate) | Generates a new x509 certificate + RSA key pair, applies it to an APIC user, updates Tower. |
 
 ## Integration
 
