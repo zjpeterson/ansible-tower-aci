@@ -1,1 +1,0 @@
-aci_inventory/README.md
