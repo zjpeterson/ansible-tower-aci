@@ -40,7 +40,7 @@ Recommended Tower usage is to consume the plugin via SCM.
 
 ### Credential Type
 
-You may use the `aci_credential_type` role in this collection to provision a Crdential Type that will work with the plugin. A basic version of its configuration is shown below:
+You may use the `aci_tower_credential_type` role in this collection to provision a Crdential Type that will work with the plugin. A minimum version of its configuration that will work with this plugin is shown below:
 
 Input Configuration
 ```
