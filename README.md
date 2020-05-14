@@ -1,4 +1,4 @@
-# ansible-aci
+# ansible-tower-aci
 Ansible Collection for use with [Cisco ACI](https://www.cisco.com/c/en/us/solutions/data-center-virtualization/application-centric-infrastructure/index.html), focused on the use of Ansible Tower.
 
 Available on Ansible Galaxy as a Collection: [zjpeterson.aci](https://galaxy.ansible.com/zjpeterson/aci)
