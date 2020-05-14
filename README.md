@@ -3,6 +3,8 @@ Ansible Collection for use with [Cisco ACI](https://www.cisco.com/c/en/us/soluti
 
 Available on Ansible Galaxy as a Collection: [zjpeterson.aci](https://galaxy.ansible.com/zjpeterson/aci)
 
+For best experience, read this docuementation on [GitHub Pages](https://zjpeterson.github.io/ansible-tower-aci/)
+
 ## Contents
 
 ### Plugins
