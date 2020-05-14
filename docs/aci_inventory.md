@@ -1,0 +1,1 @@
+Content has moved to https://zjpeterson.github.io/ansible-tower-aci/docs/aci_inventory
