@@ -52,4 +52,4 @@ If you go on to use Credentials built from this Credential Type with playbooks t
       # private_key: "{{ aci_private_key }}"
       state: query
 ```
-The above assumes an inventory with group `apic` that has a single enabled APIC target. You could also use `hosts: localhost` at play level and `host: "{{ aci_host }}` as module input, however, your task output will be less clear if you do this.
+The above assumes an inventory with group `apic` that has a single enabled APIC target. You could also use `hosts: localhost` at play level and `host: "{{ aci_host }}"` as module input, however, your task output will be less clear if you do this.
