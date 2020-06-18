@@ -4,7 +4,7 @@ Creates a Credential Type in Ansible Tower that will be compatible with the othe
 ## Usage (this role)
 
 ### Credential
-It's expected that this will be run in Tower itself, using a Credential of the built-in type "Ansible Tower". If you do *not* want to do that, you'll need to emulate the environment provided in that scenario, which is outside the scope of this document.
+It's expected that this will be run in AWX/Tower itself, using a Credential of the built-in type "Ansible Tower". If you do *not* want to do that, you'll need to emulate the environment provided in that scenario by setting appropriate environment variables: `TOWER_HOST`, `TOWER_USERNAME`, `TOWER_PASSWORD`, `TOWER_VERIFY_SSL`, and/or `TOWER_OAUTH_TOKEN`.
 
 ### Inventory
 Since the built-in Credential Type "Ansible Tower" stores hostname information, the only inventory consideration is to use a single target, such as `localhost`, or the name of a single server in your Tower cluster.
@@ -20,18 +20,20 @@ The only variable in the role is the name of the Credential Type, `tower_cred_ty
 ### Variable outputs
 The injector configuration outputs the following:
 
-| Regular variable  | Environment variable | Required | Encrypted |
-| ----------------- | -------------------- | -------- | --------- |
-| `aci_username`    | `ACI_USERNAME`       | yes      | no        |
-| `aci_password`    | `ACI_PASSWORD`       | no       | yes       |
-| `aci_private_key` | `ACI_PRIVATE_KEY`    | no       | yes       |
+| Extra variable       | Environment variable | Required | Encrypted |
+| -------------------- | -------------------- | -------- | --------- |
+| `aci_host`           | `ACI_HOST`           | yes      | no        |
+| `aci_validate_certs` | `ACI_VERIFY_SSL`     | no       | n/a       |
+| `aci_username`       | `ACI_USERNAME`       | yes      | no        |
+| `aci_password`       | `ACI_PASSWORD`       | no       | yes       |
+| `aci_private_key`    | `ACI_PRIVATE_KEY`    | no       | yes       |
 
-The environment variables are primarily meant for use with the `aci_inventory` plugin in this Collection, but are nevertheless available if you have another use for them. The regular variables are meant for use in playbooks.
+The environment variables are primarily meant for use with the `aci_inventory` plugin in this Collection, but are nevertheless available if you have another use for them. The extra variables are meant for use with tasks.
 
 You have to provide *either* `aci_password` or `aci_private_key` for the credential to be useful, but the Credential Type does not enforce this, nor does it prevent setting of both.
 
 ### Playbooks
-If you go on to use Credenitals built from this Credential Type with playbooks that use the modules in `cisco.aci`, consider the following example:
+If you go on to use Credentials built from this Credential Type with playbooks that use the modules in `cisco.aci`, consider the following example:
 
 ```
 ---

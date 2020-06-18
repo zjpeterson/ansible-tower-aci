@@ -1,26 +1,38 @@
 {
     "fields": [
         {
+            "id": "host",
+            "type": "string",
+            "label": "APIC Host",
+            "secret": false
+        },
+        {
             "id": "username",
             "type": "string",
-            "label": "APIC Username",
+            "label": "Username",
             "secret": false
         },
         {
             "id": "password",
             "type": "string",
-            "label": "APIC Password",
+            "label": "Password",
             "secret": true
         },
         {
             "id": "private_key",
             "type": "string",
-            "label": "APIC Private Key",
+            "label": "Private Key",
             "secret": true,
             "multiline": true
+        },
+        {
+            "id": "verify_ssl",
+            "type": "boolean",
+            "label": "Verify SSL"
         }
     ],
     "required": [
+        "host",
         "username"
     ]
 }

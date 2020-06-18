@@ -1,10 +1,14 @@
 {
     "env": {
+        "ACI_HOST": "{{ host }}",
+        "ACI_VERIFY_SSL": "{{ verify_ssl }}",
         "ACI_USERNAME": "{{ username }}",
         "ACI_PASSWORD": "{{ password }}",
         "ACI_PRIVATE_KEY": "{{ private_key }}"
     },
     "extra_vars": {
+        "aci_host": "{{ host }}",
+        "aci_validate_certs": "{{ verify_ssl }}",
         "aci_username": "{{ username }}",
         "aci_password": "{{ password }}",
         "aci_private_key": "{{ private_key }}"
