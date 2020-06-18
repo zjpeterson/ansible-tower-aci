@@ -28,7 +28,7 @@ The injector configuration outputs the following:
 | `aci_password`       | `ACI_PASSWORD`       | no       | yes       |
 | `aci_private_key`    | `ACI_PRIVATE_KEY`    | no       | yes       |
 
-The environment variables are primarily meant for use with the `aci_inventory` plugin in this Collection, but are nevertheless available if you have another use for them. The extra variables are meant for use with tasks.
+The environment variables, as well as the host/SSL data, are primarily meant for use with the `aci_inventory` plugin in this Collection, but are nevertheless available if you have another use for them. The extra variables are meant for use with tasks.
 
 You have to provide *either* `aci_password` or `aci_private_key` for the credential to be useful, but the Credential Type does not enforce this, nor does it prevent setting of both.
 
@@ -52,4 +52,4 @@ If you go on to use Credentials built from this Credential Type with playbooks t
       # private_key: "{{ aci_private_key }}"
       state: query
 ```
-The above assumes an inventory with group `apic` that has a single enabled APIC target.
+The above assumes an inventory with group `apic` that has a single enabled APIC target. You could also use `hosts: localhost` at play level and `host: "{{ aci_host }}` as module input, however, your task output will be less clear if you do this.
