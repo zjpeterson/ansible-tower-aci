@@ -23,9 +23,9 @@ Please reference the full documentation under `docs/` and the example playbooks 
 
 | Role | Description |
 | --- | --- |
-| [aci_tower_credential_type](./docs/aci_tower_credential_type) | Creates an Ansible Tower Credential Type for Cisco ACI. |
-| [aci_aaa_user_security](./docs/aci_aaa_user_security) | Creates/maintains an APIC user to use with Ansible, applies desired security roles, updates Tower. |
-| [aci_aaa_certificate_rotate](./docs/aci_aaa_certificate_rotate) | Generates a new x509 certificate + RSA key pair, applies it to an APIC user, updates Tower. |
+| [aci_tower_credential_type](./roles/aci_tower_credential_type) | Creates an Ansible Tower Credential Type for Cisco ACI. |
+| [aci_aaa_user_security](./roles/aci_aaa_user_security) | Creates/maintains an APIC user to use with Ansible, applies desired security roles, updates Tower. |
+| [aci_aaa_certificate_rotate](./roles/aci_aaa_certificate_rotate) | Generates a new x509 certificate + RSA key pair, applies it to an APIC user, updates Tower. |
 
 ## Integration
 
@@ -38,4 +38,4 @@ These pieces fit together. You can, for instance:
 5. Use `aci_aaa_certificate_rotate` to convert the APIC admin user to certificate-based authentication (a best practice)
 6. Use `aci_aaa_certificate_rotate` on a schedule to keep the certificate rotated, if that's a requirement for your organization
 7. Use `aci_inventory` with the APIC admin credential to keep Tower current with the physical inventory of your ACI fabric
-8. Use the APIC admin credential to relaiably provide `cisco.aci` modules with login information
+8. Use the APIC admin credential to reliably provide `cisco.aci` modules with login information
