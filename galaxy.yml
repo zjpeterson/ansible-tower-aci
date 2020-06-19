@@ -1,11 +1,14 @@
 namespace: zjpeterson
 name: aci
-version: 0.2.1
+version: 0.3.0
 readme: README.md
 authors:
   - Zach Peterson (@zjpeterson)
 description: Ansible collection for use with Cisco ACI, focused on the use of Ansible Tower
 license_file: LICENSE
+dependencies:
+  awx.awx: ">=11.0.0"
+  cisco.aci: ">=0.0.5"
 tags:
   - cisco
   - aci
