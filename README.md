@@ -15,7 +15,7 @@ Please reference the full documentation under `docs/` and the examples under `ex
 
 | Plugin | Description |
 | --- | --- |
-| [aci_inventory](./docs/aci_inventory) | Builds an Ansible inventory of the physical hardware involved in the associated ACI fabric. |
+| [aci_inventory](./plugins/inventory) | Builds an Ansible inventory of the physical hardware involved in the associated ACI fabric. |
 
 ### Roles
 
