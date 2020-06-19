@@ -20,7 +20,7 @@ Provide the following information in your YAML inventory:
 | ------------------ | -------------------- | -------- | --------------------------------- | ----------------------------------------------------------------- |
 | `plugin`           | n/a                  | yes      | `zjpeterson.aci.aci_inventory`    | The fully-qualified name of the plugin                            |
 | `host`             | `ACI_HOST`           | yes      | n/a                               | IP Address or hostname of APIC resolvable by Ansible control host |
-| `validate_certs`   | `ACI_VERIFY_SSL`     | no       | `yes`                             | If no, SSL certificates will not be validated                     |
+| `validate_certs`   | `ACI_VALIDATE_CERTS` | no       | `yes`                             | If no, SSL certificates will not be validated                     |
 | `username`         | `ACI_USERNAME`       | yes      | n/a                               | The username to use for authentication                            |
 | `password`         | `ACI_PASSWORD`       | yes      | n/a                               | The password to use for authentication                            |
 | `flat`             | n/a                  | no       | `no`                              | Instruct the plugin not to create child groups                    |
