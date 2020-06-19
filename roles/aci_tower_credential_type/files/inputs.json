@@ -26,7 +26,7 @@
             "multiline": true
         },
         {
-            "id": "verify_ssl",
+            "id": "validate_certs",
             "type": "boolean",
             "label": "Verify SSL"
         }

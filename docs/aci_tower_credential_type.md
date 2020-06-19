@@ -23,7 +23,7 @@ The injector configuration outputs the following:
 | Extra variable       | Environment variable | Required | Encrypted |
 | -------------------- | -------------------- | -------- | --------- |
 | `aci_host`           | `ACI_HOST`           | yes      | no        |
-| `aci_validate_certs` | `ACI_VERIFY_SSL`     | no       | n/a       |
+| `aci_validate_certs` | `ACI_VALIDATE_CERTS` | no       | n/a       |
 | `aci_username`       | `ACI_USERNAME`       | yes      | no        |
 | `aci_password`       | `ACI_PASSWORD`       | no       | yes       |
 | `aci_private_key`    | `ACI_PRIVATE_KEY`    | no       | yes       |

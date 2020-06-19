@@ -38,7 +38,7 @@ DOCUMENTATION = '''
             description: If no, SSL certificates will not be validated.
             type: bool
             env:
-                - name: ACI_VERIFY_SSL
+                - name: ACI_VALIDATE_CERTS
             default: True
             required: False
             aliases: [ verify_ssl ]
