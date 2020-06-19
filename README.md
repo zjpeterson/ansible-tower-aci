@@ -11,7 +11,7 @@ A walkthrough of `aci_inventory` can be found on the [Ansible Blog](https://www.
 
 ### Plugins
 
-Please reference the full documentation under `docs/` and the examples under `examples/`.
+Please reference the full documentation README files and the examples under `examples/`.
 
 | Plugin | Description |
 | --- | --- |
@@ -19,7 +19,7 @@ Please reference the full documentation under `docs/` and the examples under `ex
 
 ### Roles
 
-Please reference the full documentation under `docs/` and the example playbooks under `playbooks/`.
+Please reference the full documentation README files and the example playbooks under `playbooks/`.
 
 | Role | Description |
 | --- | --- |
