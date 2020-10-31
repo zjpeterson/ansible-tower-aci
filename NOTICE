@@ -1,0 +1,7 @@
+ansible-tower-aci
+Copyright (c) 2020 Zach Peterson
+
+Licensed under The GNU General Public License v3.0 (GPLv3)
+
+This project contains an Ansible Collection intended for use with Ansible: https://github.com/ansible/ansible
+Development guidelines can be found at: https://docs.ansible.com/ansible/latest/dev_guide/developing_collections.html
